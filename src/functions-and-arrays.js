@@ -37,7 +37,7 @@ function sumNumbers(numbers) {
   
   let sumTotal = 0;
   
-  if (numbers.length ===0) return 0;
+  if (numbers.length ===0 ) return 0;
 
   for (let i=0; i < numbers.length; i++){
     sumTotal += numbers[i];
@@ -50,7 +50,34 @@ function sumNumbers(numbers) {
 
 
 // Iteration #3.1 Bonus:
-function sum() {}
+function sum(arr) {
+
+  let sumTotal = 0;
+
+  for (let i=0; i < arr.length; i++) {
+    let el = arr[i];
+    
+
+    switch(typeof el){
+
+      case 'string': 
+        sumTotal += el.length;
+        break
+      case 'number':
+        sumTotal += el;
+        break
+      case 'boolean':
+        if (el) sumTotal += 1;
+        // else sumTotal += 0 
+        break
+      default:
+         throw new Error ("Unsupported data type sir or ma'am");
+    }
+
+  }
+
+
+}
 
 
 
@@ -61,8 +88,12 @@ const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 function averageNumbers(numbersAvg) {
 
   let sumTotal = 0;
+
+  Array.isArray(numbersAvg);
   
   if (numbersAvg.length === 0) return null;
+
+
 
   for (let i=0; i < numbersAvg.length; i++){
     sumTotal += numbersAvg[i];
@@ -99,7 +130,29 @@ return average = wordIndex/wordsArr.length;
 
 
 // Bonus - Iteration #4.1
-function avg() {}
+
+const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
+// should return: 57
+
+function avg(arr) {
+
+if (arr.length === 0) return null;
+
+let avg = 0;
+
+for (let element of arr){
+
+  if ( Array.isArray(element) ){
+    throw new Error ("not an Array");
+  }
+  if (typeof element === 'string') avg += element.length;
+  else avg += element;
+}
+return avg;
+
+}
+
+
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
